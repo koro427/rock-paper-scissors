@@ -45,13 +45,13 @@ function game() {
     let computerWinCounter = 0;
     let playerWinCounter = 0;
     let drawCounter = 0;
-    let winner;
+    let gameWinner;
 
     for (let i = 0; i < 5; i++) {
-        let winner = playRound(getComputerChoice(), getPlayerChoice());
-        if (winner === "computer") {
+        let roundWinner = playRound(getComputerChoice(), getPlayerChoice());
+        if (roundWinner === "computer") {
             computerWinCounter++;
-        } else if (winner === "player") {
+        } else if (roundWinner === "player") {
             playerWinCounter++;
         } else {
             drawCounter++;
@@ -59,12 +59,12 @@ function game() {
     }
 
     if (computerWinCounter === playerWinCounter) {
-        winner = "nobody";
+     gameWinner = "nobody";
     } else {
-        winner = (computerWinCounter > playerWinCounter) ? "Computer" : "Player";
+     gameWinner = (computerWinCounter > playerWinCounter) ? "Computer" : "Player";
     }
     
-    console.log(`Computer won ${computerWinCounter} round(s). Player won ${playerWinCounter} round(s). ${drawCounter} draws. ${winner} WINS!`);
+    console.log(`Computer won ${computerWinCounter} round(s). Player won ${playerWinCounter} round(s). ${drawCounter} draws. ${gameWinner} WINS!`);
 
 }
 
