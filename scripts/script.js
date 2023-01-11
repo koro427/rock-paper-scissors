@@ -46,11 +46,9 @@ function game() {
     let playerWinCounter = 0;
     let drawCounter = 0;
     let gameWinner;
+    let gameStatus = true;
 
-    for (let i = 0; i < 5; i++) {
-        if (computerWinCounter === 5 || playerWinCounter === 5) {
-            break;
-        }
+    do {
         let roundWinner = playRound(getComputerChoice(), getPlayerChoice());
         if (roundWinner === "computer") {
             computerWinCounter++;
@@ -58,9 +56,11 @@ function game() {
             playerWinCounter++;
         } else if (roundWinner === "draw") {
             drawCounter++;
-            i--
         }
-    }
+        if (computerWinCounter === 5 || playerWinCounter === 5) {
+            gameStatus = false;
+        }
+    } while (gameStatus)
 
     if (computerWinCounter === playerWinCounter) {
      gameWinner = "nobody";
