@@ -48,13 +48,17 @@ function game() {
     let gameWinner;
 
     for (let i = 0; i < 5; i++) {
+        if (computerWinCounter === 5 || playerWinCounter === 5) {
+            break;
+        }
         let roundWinner = playRound(getComputerChoice(), getPlayerChoice());
         if (roundWinner === "computer") {
             computerWinCounter++;
         } else if (roundWinner === "player") {
             playerWinCounter++;
-        } else {
+        } else if (roundWinner === "draw") {
             drawCounter++;
+            i--
         }
     }
 
